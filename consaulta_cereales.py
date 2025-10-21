@@ -71,6 +71,62 @@ def max_rinde_anual(archivo):
     print('Fue en', maximo_rinde,'con un rinde de ', "{:,.2f}".format(max_rinde), 'toneladas')
     
    
+def actualizar_archivo(archivo):
+    ''' Esta funcion permitira la actualizacion del archivo CSV ya que hay registros hasta el 2018, ojo las actualizaciones deben ser oficiales '''
+    ar = pd.read_csv(archivo, header=0)
+
+    nueva_fila = {}
+    print("Ingresa los datos para la nueva fila:")
+    print('''
+            !!! Tener en cuenta que los datos a ingresar deben ser oficiales !!!
+    ''')
+
+    for col in ar:
+        if col == 'cod_pais':
+            dato = int(input(f"Ingresa '{col}' (si es Argentina es 32): "))
+        elif col == 'nom_pais':
+            dato = str(input(f"Ingrese Argentina '{col}': ").strip())
+        elif col == 'año':
+            año_existentes = ar['año'].values
+            while True:
+                dato = int(input(f"Ingrese el '{col}' que va a actualizar: "))
+                if dato in año_existentes:
+                    print("El año ya existe. Por favor ingrese un año válido.")
+                else:
+                    break
+        elif col == 'producto':
+            dato = str(input(f"Ingrese el grano de cereal a actualizar en la columna '{col}': ").strip().lower())
+        elif col == 'unidad_id':
+            dato = str(input(f"Ingrese el '{col}' (es t para tonelada): ").strip().lower())
+        elif col == 'nom_unidad':
+            dato = str(input(f"Ingrese el '{col}': ").strip().lower())
+        else:
+            dato = float(input(f"Ingrese el valor en toneladas de '{col}': "))
+        nueva_fila[col]
+
+    ing = pd.DataFrame([nueva_fila])
+    df_actualizado = pd.concat([ar, ing], ignore_index=True)
+    print(tabulate(df_actualizado))
+    while True:
+        guardar = str(input('''
+            ¿Desea guardar los datos ingresado?
+            (S/N):  ''').strip().lower())
+        
+        if guardar == 's':
+            df_actualizado.to_csv(archivo, index=False)
+            print('Los datos han sido guradados con exito')
+        elif guardar == 'n' :
+            print('''
+                Los datos no se han guardado
+                Gracias !!!
+                ''')
+        else: 
+            print('\nPOR FAVOR DEBE INGRESAR UNA OPCIÓN VALIDA')
+            break
+            
+        
+
+
 
 def principal():
     
@@ -111,6 +167,7 @@ def principal():
                     - 2 : Rinde total anual del Sorgo  
                     - 3 : Rinde minimo anual
                     - 4 : Rinde Maximo anual 
+                    - 5 : Actualizar archivo
                     - 6 : Volver al menu anterior
                     ''')  
              print(80*'*')
@@ -149,15 +206,20 @@ def principal():
                     max_rinde_anual(archivo)
                     input('\nprecione enter para volver al menu Principal\n')
                     return principal()
+                
+                elif opcion_sorgo == '5':
+                    print(70*'*')
+                    actualizar_archivo(archivo)
 
                 elif opcion_sorgo == '6':
                     os.system('clear')
                     print('Gracias')
                     return principal()
+                
                 else:
                     input('''\nPOR FAVOR DEBE INGRESAR UNA OPCIÓN VALIDA
                   \nPresione enter para continuar\n''')
-                    return
+                    break
              
            
         elif opcion == '2':
@@ -173,6 +235,7 @@ def principal():
                     - 2 : Rinde total anual 
                     - 3 : Rinde minimo anual
                     - 4 : Rinde Maximo anual 
+                    - 5 : Actualizar archivo
                     - 6 : Volver al menu anterior
                     ''')  
              print(80*'*')
@@ -210,6 +273,10 @@ def principal():
                     max_rinde_anual(archivo)
                     input('\nprecione enter para volver al menu Principal\n')
                     return principal()
+                
+                elif opcion_trigopan == '5':
+                    print(70*'*')
+                    actualizar_archivo(archivo)
                     
                 elif opcion_trigopan == '6':
                     os.system('clear')
@@ -219,6 +286,7 @@ def principal():
                 else:
                     input('''\nPOR FAVOR DEBE INGRESAR UNA OPCIÓN VALIDA
                   \nPresione enter para continuar\n''')
+                    break
                              
         elif opcion == '3':
             os.system('clear')
@@ -233,6 +301,7 @@ def principal():
                     - 2 : Rinde total anual 
                     - 3 : Rinde minimo anual
                     - 4 : Rinde Maximo anual 
+                    - 5 : Actualizar archivo
                     - 6 : Volver al menu anterior
                     ''')  
             print(80*'*')
@@ -270,6 +339,11 @@ def principal():
                     max_rinde_anual(archivo)
                     input('\nprecione enter para volver al menu Principal\n')
                     return principal()
+                
+                elif opcion_trigocandal == '6':
+                    os.system('clear')
+                    print('Gracias')
+                    return principal()
                     
                 elif opcion_trigocandal == '6':
                     os.system('clear')
@@ -279,7 +353,7 @@ def principal():
                 else:
                     input('''\nPOR FAVOR DEBE INGRESAR UNA OPCIÓN VALIDA
                             \nPresione enter para continuar\n''')
-                    return
+                    break
                 
         elif opcion == '4':
             os.system('clear')
@@ -296,10 +370,11 @@ def principal():
                     - 2 : Rinde total anual 
                     - 3 : Rinde minimo anual
                     - 4 : Rinde Maximo anual 
+                    - 5 : Actualizar archivo
                     - 6 : Volver al menu anterior
                     ''')  
             print(80*'*')
-            opcion_trigocandal = input(' Ingrece una opción: ').strip()
+            
             opcion_maíz = input(' Ingrece una opción: ').strip()
             
             while True:
@@ -334,6 +409,11 @@ def principal():
                     max_rinde_anual(archivo)
                     input('\nprecione enter para volver al menu Principal\n')
                     return principal()
+                
+                elif opcion_trigocandal == '6':
+                    os.system('clear')
+                    print('Gracias')
+                    return principal()
                     
                 elif opcion_maíz == '6':
                     os.system('clear')
@@ -343,6 +423,7 @@ def principal():
                 else:
                     input('''\nPOR FAVOR DEBE INGRESAR UNA OPCIÓN VALIDA
                             \nPresione enter para continuar\n''')
+                    break
 
         elif opcion == '5':
             os.system('clear')
