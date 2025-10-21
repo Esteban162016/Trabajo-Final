@@ -109,7 +109,7 @@ def principal():
              print (''' 
                     - 1 : Lectura completo de los rinde del sorgo
                     - 2 : Rinde total anual del Sorgo  
-                    - 3 : Rinde minimo anual
+                    - 3 : Rinde Minimo anual
                     - 4 : Rinde Maximo anual 
                     - 6 : Volver al menu anterior
                     ''')  
@@ -171,7 +171,7 @@ def principal():
              print (''' 
                     - 1 : Lectura completo de los rinde
                     - 2 : Rinde total anual 
-                    - 3 : Rinde minimo anual
+                    - 3 : Rinde Minimo anual
                     - 4 : Rinde Maximo anual 
                     - 6 : Volver al menu anterior
                     ''')  
@@ -231,7 +231,7 @@ def principal():
             print (''' 
                     - 1 : Lectura completo de los rinde
                     - 2 : Rinde total anual 
-                    - 3 : Rinde minimo anual
+                    - 3 : Rinde Minimo anual
                     - 4 : Rinde Maximo anual 
                     - 6 : Volver al menu anterior
                     ''')  
@@ -294,12 +294,12 @@ def principal():
             print (''' 
                     - 1 : Lectura completo de los rinde
                     - 2 : Rinde total anual 
-                    - 3 : Rinde minimo anual
+                    - 3 : Rinde Minimo anual
                     - 4 : Rinde Maximo anual 
                     - 6 : Volver al menu anterior
                     ''')  
             print(80*'*')
-            opcion_trigocandal = input(' Ingrece una opción: ').strip()
+            
             opcion_maíz = input(' Ingrece una opción: ').strip()
             
             while True:
@@ -333,7 +333,7 @@ def principal():
                     print(70*'*')
                     max_rinde_anual(archivo)
                     input('\nprecione enter para volver al menu Principal\n')
-                    return principal()
+                    return principal()                   
                     
                 elif opcion_maíz == '6':
                     os.system('clear')
