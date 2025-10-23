@@ -83,22 +83,28 @@ def actualizar_archivo(archivo):
 
     for col in ar:
          if col == 'cod_pais':
+             os.system('clear')
              dato = int(input(f"Ingresa '{col}' (si es Argentina es 32): "))
          elif col == 'nom_pais':
+             os.system('clear')
              dato = str(input(f"Ingrese Argentina '{col}': ").strip())
          elif col == 'año':
+             os.system('clear')
              año_existentes = ar['año'].values
              while True:
-                 dato = int(input(f"Ingrese el '{col}' que va a actualizar: "))
+                 dato = int(input(f"Ingrese el '{col}' que desea agregar: "))
                  if dato in año_existentes:
                     print("El año ya existe. Por favor ingrese un año válido.")
                  else:
                     break
          elif col == 'producto':
+             os.system('clear')
              dato = str(input(f"Ingrese el grano de cereal a actualizar en la columna '{col}': ").strip().lower())
          elif col == 'unidad_id':
+                os.system('clear')
                 dato = str(input(f"Ingrese el '{col}' (es t para tonelada): ").strip().lower())
          elif col == 'nom_unidad':
+                os.system('clear')
                 dato = str(input(f"Ingrese el '{col}': ").strip().lower())
          else:
                 dato = float(input(f"Ingrese el valor en toneladas de '{col}': "))
