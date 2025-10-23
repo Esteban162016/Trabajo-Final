@@ -200,8 +200,8 @@ def principal():
              
              print(80*'*')
              print (''' 
-                    - 1 : Lectura completo de los rinde del sorgo
-                    - 2 : Rinde total anual del Sorgo  
+                    - 1 : Lectura Completa de los rindes aportados
+                    - 2 : Rinde Total por Año 
                     - 3 : Rinde Minimo anual
                     - 4 : Rinde Maximo anual 
                     - 5 : Actualizar archivo
@@ -274,11 +274,13 @@ def principal():
              
              print(80*'*')
              print (''' 
-                    - 1 : Lectura completo de los rinde
-                    - 2 : Rinde total anual 
+                    - 1 : Lectura Completa de los rindes aportados
+                    - 2 : Rinde Total por Año 
                     - 3 : Rinde Minimo anual
                     - 4 : Rinde Maximo anual 
-                    - 6 : Volver al menu anterior
+                    - 5 : Actualizar archivo
+                    - 6 : Borrado de fila actualizada
+                    - 7 : Volver al menu anterior
                     ''')  
              print(80*'*')
              opcion_trigopan = input(' Ingrece una opción: ').strip()
@@ -315,8 +317,18 @@ def principal():
                     max_rinde_anual(archivo)
                     input('\nprecione enter para volver al menu Principal\n')
                     return principal()
-                    
+                
+                elif opcion_trigopan == '5':
+                    actualizar_archivo(archivo)
+                    input('\nprecione enter para volver al menu Principal\n')
+                    return principal()
+                
                 elif opcion_trigopan == '6':
+                    borrar_actualizaciones(archivo)
+                    input('\nprecione enter para volver al menu Principal\n')
+                    return principal()
+                    
+                elif opcion_trigopan == '7':
                     os.system('clear')
                     print('Gracias')
                     return principal()
@@ -334,11 +346,13 @@ def principal():
              
             print(80*'*')
             print (''' 
-                    - 1 : Lectura completo de los rinde
-                    - 2 : Rinde total anual 
+                    - 1 : Lectura Completa de los rindes aportados
+                    - 2 : Rinde Total por Año 
                     - 3 : Rinde Minimo anual
                     - 4 : Rinde Maximo anual 
-                    - 6 : Volver al menu anterior
+                    - 5 : Actualizar archivo
+                    - 6 : Borrado de fila actualizada
+                    - 7 : Volver al menu anterior
                     ''')  
             print(80*'*')
             opcion_trigocandal = input(' Ingrece una opción: ').strip()
@@ -375,8 +389,18 @@ def principal():
                     max_rinde_anual(archivo)
                     input('\nprecione enter para volver al menu Principal\n')
                     return principal()
-                    
+                
+                elif opcion_trigocandal == '5':
+                    actualizar_archivo(archivo)
+                    input('\nprecione enter para volver al menu Principal\n')
+                    return principal()
+                
                 elif opcion_trigocandal == '6':
+                    borrar_actualizaciones(archivo)
+                    input('\nprecione enter para volver al menu Principal\n')
+                    return principal()
+                    
+                elif opcion_trigocandal == '7':
                     os.system('clear')
                     print('Gracias')
                     return principal()
@@ -397,11 +421,13 @@ def principal():
              
             print(80*'*')
             print (''' 
-                    - 1 : Lectura completo de los rinde
-                    - 2 : Rinde total anual 
+                    - 1 : Lectura Completa de los rindes aportados
+                    - 2 : Rinde Total por Año 
                     - 3 : Rinde Minimo anual
                     - 4 : Rinde Maximo anual 
-                    - 6 : Volver al menu anterior
+                    - 5 : Actualizar archivo
+                    - 6 : Borrado de fila actualizada
+                    - 7 : Volver al menu anterior
                     ''')  
             print(80*'*')
             
@@ -438,9 +464,19 @@ def principal():
                     print(70*'*')
                     max_rinde_anual(archivo)
                     input('\nprecione enter para volver al menu Principal\n')
-                    return principal()                   
-                    
+                    return principal() 
+
+                elif opcion_maíz == '5':
+                    actualizar_archivo(archivo)
+                    input('\nprecione enter para volver al menu Principal\n')
+                    return principal()
+                
                 elif opcion_maíz == '6':
+                    borrar_actualizaciones(archivo)
+                    input('\nprecione enter para volver al menu Principal\n')
+                    return principal()                 
+                    
+                elif opcion_maíz == '7':
                     os.system('clear')
                     print('Gracias')
                     return principal()
