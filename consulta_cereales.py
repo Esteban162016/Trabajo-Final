@@ -144,10 +144,14 @@ def borrar_actualizaciones(archivo):
         
         if opcion == 'S':
             if fila_a_eliminar in ar['año'].values:
-                ar.drop(ar[ar['año'] == fila_a_eliminar].index, inplace=True)
-                print(f'La fila del año {fila_a_eliminar} fue eliminada.')
-                ar.to_csv(archivo, index=False)
-                print(tabulate(ar, headers="keys", tablefmt="psql"))
+                if fila_a_eliminar <= 2018:
+                    print(f'No se permite eliminar filas del año {fila_a_eliminar} o anteriores.')
+                    return
+                else:
+                    ar.drop(ar[ar['año'] == fila_a_eliminar].index, inplace=True)
+                    print(f'La fila del año {fila_a_eliminar} fue eliminada.')
+                    ar.to_csv(archivo, index=False)
+                    print(tabulate(ar, headers="keys", tablefmt="psql"))
             else:
                 print(f'No se encontró ninguna fila con el año {fila_a_eliminar}.')
             break
