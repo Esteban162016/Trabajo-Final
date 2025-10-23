@@ -108,25 +108,56 @@ def actualizar_archivo(archivo):
 
     input('Presione enter para continuar')
 
-    # ing = pd.DataFrame([nueva_fila])
-    # df_actualizado = pd.concat([ar, ing], ignore_index=True)
-    # print(tabulate(df_actualizado))
-    # while True:
-    #     guardar = str(input('''
-    #         ¿Desea guardar los datos ingresado?
-    #         (S/N):  ''').strip().lower())
+    ing = pd.DataFrame([nueva_fila])
+    df_actualizado = pd.concat([ar, ing], ignore_index=True)
+    print(tabulate(df_actualizado))
+    while True:
+        guardar = str(input('''
+            ¿Desea guardar los datos ingresado?
+            (S/N):  ''').strip().lower())
         
-    #     if guardar == 's':
-    #         df_actualizado.to_csv(archivo, index=False)
-    #         print('Los datos han sido guradados con exito')
-    #     elif guardar == 'n' :
-    #         print('''
-    #             Los datos no se han guardado
-    #             Gracias !!!
-    #             ''')
-    #     else: 
-    #         print('\nPOR FAVOR DEBE INGRESAR UNA OPCIÓN VALIDA')
-    #         break
+        if guardar == 's':
+            df_actualizado.to_csv(archivo, index=False)
+            print('Los datos han sido guradados con exito')
+            break
+        elif guardar == 'n' :
+            print('''
+                Los datos no se han guardado
+                Gracias !!!
+                ''')
+            break
+        else: 
+            print('\nPOR FAVOR DEBE INGRESAR UNA OPCIÓN VALIDA')
+            break
+
+
+def borrar_actualizaciones(archivo):
+    ''' Esta funcion es para borra las filas que se cargaron mal o no deseamo tenerla'''
+    ar = pd.read_csv(archivo, header=0)
+    print(tabulate(ar, headers='keys', tablefmt='psql'))
+
+    fila_a_eliminar = int(input('Por favor ingrese el año de la fila que desea eliminar: '))
+    
+    while True:
+        opcion = input(f'Usted ingresó {fila_a_eliminar}. '
+                       'Si es correcto presione S, de lo contrario presione N: ').strip().upper()
+        
+        if opcion == 'S':
+            if fila_a_eliminar in ar['año'].values:
+                ar.drop(ar[ar['año'] == fila_a_eliminar].index, inplace=True)
+                print(f'La fila del año {fila_a_eliminar} fue eliminada.')
+                ar.to_csv(archivo, index=False)
+                print(tabulate(ar, headers="keys", tablefmt="psql"))
+            else:
+                print(f'No se encontró ninguna fila con el año {fila_a_eliminar}.')
+            break
+        elif opcion== 'N':
+            print('No se a eliminado la fila')
+            break
+        else:
+            print('POr favos ingrese una opción valida')
+
+    print (tabulate(ar))    
     
    
 
@@ -170,7 +201,8 @@ def principal():
                     - 3 : Rinde Minimo anual
                     - 4 : Rinde Maximo anual 
                     - 5 : Actualizar archivo
-                    - 6 : Volver al menu anterior
+                    - 6 : Borrado de fila actualizada
+                    - 7 : Volver al menu anterior
                     ''')  
              print(80*'*')
 
@@ -213,8 +245,13 @@ def principal():
                     actualizar_archivo(archivo)
                     input('\nprecione enter para volver al menu Principal\n')
                     return principal()
-
+                
                 elif opcion_sorgo == '6':
+                    borrar_actualizaciones(archivo)
+                    input('\nprecione enter para volver al menu Principal\n')
+                    return principal()
+
+                elif opcion_sorgo == '7':
                     os.system('clear')
                     print('Gracias')
                     return principal()
