@@ -1,4 +1,4 @@
-﻿cod_pais,nom_pais,año,producto,uni_med,nom_med,enero,febrero,marzo,abril,mayo,junio,julio,agosto,septiembre,octubre,noviembre,diciembre
+﻿cod_pais,nom_pais,año,producto,unidad_id,nom_med,enero,febrero,marzo,abril,mayo,junio,julio,agosto,septiembre,octubre,noviembre,diciembre
 32,Argentina,1950,maíz,t,tonelada,10020,7855,12792,12935,13690,14769,14796,14347,13095,11863,12000,10212
 32,Argentina,1951,maíz,t,tonelada,9483,7573,10773,13241,13192,16577,16950,15618,14666,12970,16152,14059
 32,Argentina,1952,maíz,t,tonelada,12405,12083,13149,15785,16951,14948,16252,17858,17398,14979,16152,16058

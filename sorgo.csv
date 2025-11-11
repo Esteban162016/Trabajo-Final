@@ -1,4 +1,4 @@
-cod_pais,nom_pais,año,producto,unidad_id,nom_unidad,enero,febrero,marzo,abril,mayo,junio,julio,agosto,septiembre,octubre,noviembre,diciembre
+cod_pais,nom_pais,año,producto,unidad_id,nom_uni,enero,febrero,marzo,abril,mayo,junio,julio,agosto,septiembre,octubre,noviembre,diciembre
 32,Argentina,1960,grano de sorgo,t,tonelada,2959.0,2939.0,5661.0,4257.0,2777.0,375.0,449.0,3743.0,4423.0,3326.0,3612.0,3433.0
 32,Argentina,1961,grano de sorgo,t,tonelada,2667.0,24.0,4369.0,485.0,7343.0,7095.0,8018.0,9512.0,9464.0,7054.0,8446.0,8831.0
 32,Argentina,1962,grano de sorgo,t,tonelada,5885.0,816.0,9378.0,10073.0,10211.0,10135.0,9895.0,10952.0,9227.0,7513.0,9715.0,7092.0

@@ -1,4 +1,4 @@
-cod_pais,nom_pais,año,producto,cod_uni,nom_uni,enero,febrero,marzo,abril,mayo,junio,julio,agosto,septiembre,octubre,noviembre,diciembre
+cod_pais,nom_pais,año,producto,unidad_id,nom_uni,enero,febrero,marzo,abril,mayo,junio,julio,agosto,septiembre,octubre,noviembre,diciembre
 32,Argentina,1993,grano de trigo canedal,t,tonelada,0,0,85,95,96,113,8,45,8,43,83,5
 32,Argentina,1994,grano de trigo canedal,t,tonelada,28,62,74,8,70,55,76,76,75,51,36,33
 32,Argentina,1995,grano de trigo canedal,t,tonelada,12,75,102,46,108,104,8,10,10,32,8,5

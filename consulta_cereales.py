@@ -5,7 +5,7 @@
 import pandas as pd
 from tabulate import tabulate
 import os
-
+from datetime import datetime
 
 ### Archicvos Utilizados ###
 
@@ -84,31 +84,56 @@ def actualizar_archivo(archivo):
     for col in ar:
          if col == 'cod_pais':
              os.system('clear')
-             dato = int(input(f"Ingresa '{col}' (si es Argentina es 32): "))
+             while True:
+                try:
+                    dato = int(input(f"Ingresa '{col}' (si es Argentina es 32): "))
+                    if dato != 32:
+                        print("Ingrese solo 32, este archivo es para Argentina, Gracias")
+                    else:
+                        break
+                except ValueError:
+                    print("Debe ingresar un nombre válido.")
          elif col == 'nom_pais':
              os.system('clear')
-             dato = str(input(f"Ingrese Argentina '{col}': ").strip())
+             while True: 
+                try:
+                    dato = str(input(f"Ingrese Argentina '{col}': ").strip())
+                    if dato != "Argentina":
+                        print("Ingrese solo Argentina, este archivo es para Argentina, Gracias")
+                    else:
+                        break
+                except ValueError:
+                    print("Debe ingresar un nombre válido.")
          elif col == 'año':
              os.system('clear')
              año_existentes = ar['año'].values
+             año_actual = datetime.now().year
              while True:
-                 dato = int(input(f"Ingrese el '{col}' que desea agregar: "))
-                 if dato in año_existentes:
-                    print("El año ya existe. Por favor ingrese un año válido.")
-                 else:
-                    break
+                 try:
+                    dato = int(input(f"Ingrese el '{col}' que desea agregar: "))
+                    if dato < 2018 or dato > año_actual:
+                        print(f"Ingrese un año válido (entre 1900 y {año_actual}).")
+                    elif dato in año_existentes:
+                        print("El año ya existe. Por favor ingrese un año válido.")
+                    else:
+                        break
+                 except ValueError:
+                    print("Debe ingresar un número entero válido para el año.")
          elif col == 'producto':
              os.system('clear')
-             dato = str(input(f"Ingrese el grano de cereal a actualizar en la columna '{col}': ").strip().lower())
+             dato = str(input(f"Ingrese el grano de cereal a actualizar en la columna '{col}': grano de ").strip().lower())
          elif col == 'unidad_id':
                 os.system('clear')
                 dato = str(input(f"Ingrese el '{col}' (es t para tonelada): ").strip().lower())
-         elif col == 'nom_unidad':
+         elif col == 'nom_uni':
                 os.system('clear')
-                dato = str(input(f"Ingrese el '{col}': ").strip().lower())
+                dato = str(input(f"Ingrese el nombre de la unidad de medida'{col}': ").strip().lower())
          else:
-                dato = float(input(f"Ingrese el valor en toneladas de '{col}': "))
-        
+            while True:
+                try:
+                    dato = float(input(f"Ingrese el valor en toneladas de '{col}': "))
+                except ValueError:
+                    print("debe ingresar un dato valido")
          nueva_fila[col]=dato
     print(nueva_fila)
 
