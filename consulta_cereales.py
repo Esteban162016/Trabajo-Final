@@ -24,8 +24,8 @@ def lectura_cereal(archivo):
     
     print("\n****************************************\n")
     print('Los valores estan expresados en toneladas \n')
-    print (tabulate(ar, headers=['Año','enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'], tablefmt='fancy_grid'))
-
+    print (tabulate(ar, tablefmt='fancy_grid'))
+    
 
 def rinde_total_anual(archivo):
     '''Realiza la suma de los rinde aportados por meses y muestra el total del rinde por año del cereal seleccionado'''
